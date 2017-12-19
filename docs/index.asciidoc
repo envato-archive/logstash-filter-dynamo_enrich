@@ -1,0 +1,102 @@
+:plugin: dynamo_enrich
+:type: filter
+
+[id="plugins-{type}s-{plugin}"]
+
+=== dynamo-encrich filter plugin
+
+include::{include_path}/plugin_header.asciidoc[]
+
+==== Description
+
+This filter executes a dynamodb GetItem request and stores the result in the field specified as `target`.
+
+For example you can load a row based on an id from in the event.
+[source,ruby]
+filter {
+  dynamo_encrich {
+    table_name => "id_lookup"
+    region => "us-east-1"
+    key_value => "user_id"
+    return_attribute => "name"
+    target => "user_name"
+  }
+}
+
+[id="plugins-{type}s-{plugin}-options"]
+==== Jdbc_streaming Filter Configuration Options
+
+This plugin supports the following configuration options plus the <<plugins-{type}s-{plugin}-common-options>> described later.
+
+[cols="<,<,<",options="header",]
+|=======================================================================
+|Setting |Input type|Required
+| <<plugins-{type}s-{plugin}-table_name>> |<<string,string>>|Yes
+| <<plugins-{type}s-{plugin}-region>> |<<string,string>>|No
+| <<plugins-{type}s-{plugin}-primary_key_name>> |<<string,string>>|Yes
+| <<plugins-{type}s-{plugin}-primary_key_value>> |<<string,string>>|Yes
+| <<plugins-{type}s-{plugin}-return_attribute>> |<<string,string>>|Yes
+| <<plugins-{type}s-{plugin}-target>> |<<string,string>>|Yes
+|=======================================================================
+
+Also see <<plugins-{type}s-{plugin}-common-options>> for a list of options supported by all
+filter plugins.
+
+&nbsp;
+
+[id="plugins-{type}s-{plugin}-table_name"]
+===== `table_name` 
+
+  * This is a required setting
+  * Value type is <<string,string>>
+  * There is no default value for this setting
+
+The name of the DynamoDB table to read from.
+
+[id="plugins-{type}s-{plugin}-region"]
+===== `region` 
+
+  * Value type is <<string,string>>
+  * Default value is ""
+  * By default this plugin will lookup the environment variable `AWS_REGION` and use that if set
+
+The AWS region the DynamoDB table exists in.
+
+[id="plugins-{type}s-{plugin}-primary_key_name"]
+===== `primary_key_name` 
+
+  * This is a required setting
+  * Value type is <<string,string>>
+  * There is no default value for this setting
+
+The name of the Primary Key attribute in the DynamoDB table.
+
+[id="plugins-{type}s-{plugin}-primary_key_value"]
+===== `primary_key_value` 
+
+  * This is a required setting
+  * Value type is <<string,string>>
+  * There is no default value for this setting
+
+The event key used as the Primary Key value in the GetItem call.
+
+[id="plugins-{type}s-{plugin}-return_attribute"]
+===== `return_attribute` 
+
+  * This is a required setting
+  * Value type is <<string,string>>
+  * There is no default value for this setting
+
+The attribute from the DynamoDB item to populate in the event.
+
+[id="plugins-{type}s-{plugin}-target"]
+===== `target` 
+
+  * This is a required setting
+  * Value type is <<string,string>>
+  * There is no default value for this setting
+
+The name of the event key to enrich.
+
+[id="plugins-{type}s-{plugin}-common-options"]
+include::{include_path}/{type}.asciidoc[]
