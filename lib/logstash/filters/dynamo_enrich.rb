@@ -64,9 +64,7 @@ class LogStash::Filters::DynamoEnrich < LogStash::Filters::Base
   def fetch_dynamo(primary_key_value)
     resp = @client.get_item({
       key: {
-        @primary_key_name => {
-          s: primary_key_value,
-        },
+        @primary_key_name => primary_key_value,
       }, 
       table_name: @table_name, 
     })
