@@ -1,8 +1,12 @@
 # encoding: utf-8
 require "logstash/filters/base"
 require "logstash/namespace"
-require "aws-sdk"
 require "lru_redux"
+
+# Workaround to JRuby 1.7 bug that will never be fixed https://github.com/jruby/jruby/issues/3920
+module Aws; module DynamoDB; end; end
+require 'aws-sdk'
+require 'aws-sdk-core/dynamodb'
 
 class LogStash::Filters::DynamoEnrich < LogStash::Filters::Base
   config_name "dynamo_enrich"
