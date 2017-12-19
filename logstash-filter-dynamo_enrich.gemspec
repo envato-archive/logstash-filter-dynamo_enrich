@@ -2,8 +2,8 @@ Gem::Specification.new do |s|
   s.name          = 'logstash-filter-dynamo_enrich'
   s.version       = '0.1.0'
   s.licenses      = ['Apache License (2.0)']
-  s.summary       = 'A filter plugin to enrich events with data from DynamoDB'
-  s.description   = 'Query data from DynamoDB and populate LogStash events with the returned values'
+  s.summary       = 'Enrich Logstash events with data from DynamoDB'
+  s.description   = 'Query data from DynamoDB and populate Logstash events with the returned values'
   s.homepage      = 'https://github.com/envato/logstash-filter-dynamo_enrich'
   s.authors       = ['nemski']
   s.email         = 'patrick.robinson@envato.com'

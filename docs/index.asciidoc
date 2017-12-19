@@ -17,7 +17,8 @@ filter {
   dynamo_encrich {
     table_name => "id_lookup"
     region => "us-east-1"
-    key_value => "user_id"
+    primary_key_name => "id"
+    primary_key_value => "user_id"
     return_attribute => "name"
     target => "user_name"
   }
