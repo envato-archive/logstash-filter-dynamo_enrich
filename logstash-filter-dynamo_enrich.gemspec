@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
 
   # Gem dependencies
   s.add_runtime_dependency "logstash-core-plugin-api", "~> 2.0"
-  s.add_runtime_dependency "aws-sdk-dynamodb", "~> 1.0"
+  s.add_runtime_dependency "aws-sdk", "~> 2.3"
+  s.add_runtime_dependency "lru_redux", "~> 1.0"
   s.add_development_dependency 'logstash-devutils'
 end

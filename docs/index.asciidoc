@@ -38,6 +38,9 @@ This plugin supports the following configuration options plus the <<plugins-{typ
 | <<plugins-{type}s-{plugin}-primary_key_value>> |<<string,string>>|Yes
 | <<plugins-{type}s-{plugin}-return_attribute>> |<<string,string>>|Yes
 | <<plugins-{type}s-{plugin}-target>> |<<string,string>>|Yes
+| <<plugins-{type}s-{plugin}-enable_cache>> |<<boolean,boolean>>|No
+| <<plugins-{type}s-{plugin}-cache_ttl>> |<<number,number>>|No
+| <<plugins-{type}s-{plugin}-cache_size>> |<<number,number>>|No
 |=======================================================================
 
 Also see <<plugins-{type}s-{plugin}-common-options>> for a list of options supported by all
@@ -98,6 +101,30 @@ The attribute from the DynamoDB item to populate in the event.
   * There is no default value for this setting
 
 The name of the event key to enrich.
+
+[id="plugins-{type}s-{plugin}-enable_cache"]
+===== `enable_cache` 
+
+  * Value type is <<boolean,boolean>>
+  * Default value is true
+
+Whether or not to cache dynamodb values
+
+[id="plugins-{type}s-{plugin}-cache_ttl"]
+===== `enable_cache` 
+
+  * Value type is <<number,number>>
+  * Default value is 300
+
+The Time To Live of cached values
+
+[id="plugins-{type}s-{plugin}-cache_size"]
+===== `enable_cache` 
+
+  * Value type is <<number,number>>
+  * Default value is 1024
+
+The maximum number of values to keep in the LRU cache
 
 [id="plugins-{type}s-{plugin}-common-options"]
 include::{include_path}/{type}.asciidoc[]
