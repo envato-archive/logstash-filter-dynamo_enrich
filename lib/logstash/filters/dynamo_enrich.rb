@@ -56,7 +56,8 @@ class LogStash::Filters::DynamoEnrich < LogStash::Filters::Base
       end
     end
     filter_matched(event)
-  rescue Aws::DynamoDB::Errors::ServiceError
+  rescue Aws::DynamoDB::Errors::ServiceError => e
+    @logger.warn("DynamoDB Service Exception", :exception => e, :event => event)
     event.tag("_dynamoenrichserviceerror")
   end # def filter
 
